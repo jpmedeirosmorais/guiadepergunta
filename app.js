@@ -2,6 +2,7 @@ const express = require('express')
 const app =  express()
 const bodyParser = require('body-parser')
 const connection = require('./database/database')
+const perguntaModel = require('./database/Pergunta')
 
 //Database
 connection.authenticate().then(() =>{
@@ -9,12 +10,17 @@ connection.authenticate().then(() =>{
 }).catch((err) =>{
     console.log(err)
 })
+//essa linha é usada para renderizar o ejs
+app.set('view engine', 'ejs')
 
-app.set('view engine', 'ejs')//essa linha é usada para renderizar o ejs
-app.use(express.static('public'))//declara o uso de arquivos estáticos
+//declara o uso de arquivos estáticos
+app.use(express.static('public'))
+
+//body-parser
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
+//rotas
 app.get('/', (req, res) => {
     res.render('index')    
 })
