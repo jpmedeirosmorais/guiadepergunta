@@ -2,7 +2,9 @@ const express = require('express')
 const app =  express()
 const bodyParser = require('body-parser')
 const connection = require('./database/database')//importando configurações do database.js da pasta database
-const perguntaModel = require('./database/Pergunta')//IMPORTANDO MODEL Pergunta.js da pasta database
+const Pergunta = require('./database/Pergunta')//IMPORTANDO MODEL Pergunta.js da pasta database
+const Resposta = require('./database/Resposta')
+
 
 //Database
 connection.authenticate().then(() =>{
@@ -22,7 +24,13 @@ app.use(express.json())
 
 //rotas
 app.get('/', (req, res) => {
-    res.render('index')    
+    Pergunta.findAll({raw: true, order:[
+        ['id', 'DESC']
+    ]}).then(perguntas =>{
+        res.render('index',{
+            perguntas: perguntas
+        })
+    })
 })
 
 app.get('/perguntar', (req, res) => {
@@ -32,7 +40,34 @@ app.get('/perguntar', (req, res) => {
 app.post('/salvarpergunta', (req, res) => {
     var titulo = req.body.titulo
     var descricao = req.body.descricao
-    res.send(titulo)
+    Pergunta.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(() =>{
+        res.redirect('/')
+        req.flash('success_msg', 'Pergunta criada com sucesso!')
+    }).catch(err =>{
+        res.redirect('/perguntar')
+        req.flash('error_msg', 'Erro interno ao criar pergunta!')
+    })
+})
+
+app.get('/responder/:id', (req, res) =>{
+    var id = req.params.id
+    Pergunta.findOne({
+        where: {
+            id: id
+        }
+    }).then(pergunta =>{
+        if(pergunta != undefined){
+            res.render('responder',{
+                pergunta: pergunta
+            })
+        }else{
+            res.redirect('/')
+        }
+    })
+    
 })
 
 app.listen(8081, ()=>{

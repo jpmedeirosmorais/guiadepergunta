@@ -1,5 +1,5 @@
 body{
-    background-color:#0081d6;
+    background-color:#424242;
 }
 
 .card-body{
@@ -9,3 +9,12 @@ body{
 #home{
     margin-left: 10px;
 }
+
+.container{
+    
+}
+
+.perguntaT{
+    color: white;
+}
+

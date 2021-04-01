@@ -49,3 +49,9 @@ coisas para se instalar no projeto backend em node.js:
     -Criar o a pasta data base e dentro dela inserir o arquivo database.js(neste arquivo vai ficar concentrado a parte da configuração de conexão com o banco de dados)
     -Criar model para salvar as perguntas no banco de dados(nome do model: Pergunta.js)
 	-Configuração inicial: const connection = require('./database/database')
+
+5.ROTAS:
+    -Inicialmente é criada a rota que será a home do site que renderiza o arquivo index.ejs na pasta views.
+    -Em seguida é criada a rota para a criação de perguntas que renderiza o arquivo perguntar.ejs na pasta views.
+    -Foi criado a rota de resposta para responder as perguntas, renderiza o arquivoi responder.ejs na pasta views.
+    

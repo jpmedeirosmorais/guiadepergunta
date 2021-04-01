@@ -3,11 +3,23 @@
     <%- include ('partials/navbar.ejs'); %>
     
     <div class="container">
-        <div class="card">
-            <h1>Estilo do bootstrap</h1>
-        </div>
+        <hr>
+        <h1 class="pergunta">Perguntas:</h1> 
+        <a href="/perguntar" class= "btn btn-light">Perguntar</a>
+        <hr>
         
+        <% perguntas.forEach(pergunta =>{ %>
+            <div class="card">
+                <div class="card-body">
+                    <h3><%= pergunta.titulo %></h3>
+                </div>
+                <div class="card-footer">
+                    <a href="/responder/<%= pergunta.id %>"><button class="btn btn-dark">Responder</button></a>
+                </div> 
+            </div>
+            <br>
+        <% }) %>        
     </div>
-    
+
 </body>
 <%- include ('partials/footer.ejs'); %>

@@ -12,5 +12,11 @@ const Pergunta = connection.define('pergunta', {
     }
 })
 
-Pergunta.sync({force:false}).then(() =>{})
+Pergunta.sync({force:false}).then(() =>{
+    console.log('Model Pergunta criado com sucesso!')
+}).catch(err =>{
+    console.log('Erro ao criar model Pergnta')
+})
+
+module.exports = Pergunta
 
