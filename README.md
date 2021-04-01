@@ -4,6 +4,7 @@
 coisas para se instalar no projeto backend em node.js:
 
 1.INSTALAÇÕES:
+
 	-npm init: cria o arquivo json com as configurações do projeto.
 	-express: framework responsável pela base do back end em node.
 	-sequelize ou mongoose para o banco de dados(Neste caso foi utilizado o sequelize).
@@ -13,6 +14,7 @@ coisas para se instalar no projeto backend em node.js:
 	-nodemon para atualização em tempo real do processo de desenvolvimento.
 
 2.ESTRUTURA DO PROJETO:
+
 	-o app.js fica na pasta principal do projeto e é o entry point do projeto.
 	-é criado uma pasta com o nome de view onde ficam os arquivos html.
 	
@@ -32,6 +34,7 @@ coisas para se instalar no projeto backend em node.js:
 			module.exports = connection
 
 3.PASSOS INICIAIS:
+
 	-Fazer export no express. 'const express = require('express')
 	-Setar view egine. 'app.set('view engine', 'ejs')'
 	-Usar pasta 'public'. "app.use(express.static('public'))"
@@ -42,6 +45,7 @@ coisas para se instalar no projeto backend em node.js:
 	-Criar rota principal e as outras rotas necessárias
 
 4.CONFIGURAÇÕES DO DATABASE:
+
     -Criar o a pasta data base e dentro dela inserir o arquivo database.js(neste arquivo vai ficar concentrado a parte da configuração de conexão com o banco de dados)
     -Criar model para salvar as perguntas no banco de dados(nome do model: Pergunta.js)
 	-Configuração inicial: const connection = require('./database/database')

@@ -1,8 +1,8 @@
 const express = require('express')
 const app =  express()
 const bodyParser = require('body-parser')
-const connection = require('./database/database')
-const perguntaModel = require('./database/Pergunta')
+const connection = require('./database/database')//importando configurações do database.js da pasta database
+const perguntaModel = require('./database/Pergunta')//IMPORTANDO MODEL Pergunta.js da pasta database
 
 //Database
 connection.authenticate().then(() =>{
