@@ -11,7 +11,28 @@
                     <p><%= pergunta.descricao %></p>
                 </div>
             </div>
-        </div>
-        
+            <hr>
+            <form method="POST" action="/salvarresposta">
+                <textarea placeholder="Digite sua resposta..." class="form-control" name="resposta"></textarea>
+                <br>
+                <input type="hidden" name="perguntaId" value="<%= pergunta.id %>">
+                <button type="submit" class="btn btn-success">Enviar resposta</button>
+            </form>
+            <br>
+            <div class="respostas">
+                <h3>Respostas:</h3>
+                <br>
+                <% respostas.forEach(resposta =>{ %>   
+                    <div class="card-footer">
+                        <h5><%= resposta.corpo %></h5>
+                        <small><%= resposta.updatedAt %></small>
+                       <br><br>
+                        
+                    </div>
+                    
+                <% }) %>
+                
+            </div>
+        </div>        
 </body>
 <%- include ('partials/footer.ejs'); %>

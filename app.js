@@ -55,19 +55,38 @@ app.post('/salvarpergunta', (req, res) => {
 app.get('/responder/:id', (req, res) =>{
     var id = req.params.id
     Pergunta.findOne({
-        where: {
-            id: id
-        }
+        where: {id: id}
     }).then(pergunta =>{
         if(pergunta != undefined){
-            res.render('responder',{
-                pergunta: pergunta
-            })
+            Resposta.findAll({
+                where: {perguntaId : pergunta.id},
+                order:[
+                    ['id', 'DESC']
+                ]
+            }).then(respostas =>{
+                res.render('responder',{
+                    pergunta: pergunta,
+                    respostas :respostas
+                })
+            })            
         }else{
             res.redirect('/')
         }
     })
-    
+})
+app.post('/salvarresposta', (req, res) =>{
+    var resposta = req.body.resposta
+    var perguntaId = req.body.perguntaId
+    Resposta.create({
+        corpo: resposta,
+        perguntaId: perguntaId
+    }).then(() =>{
+        res.redirect('/responder/'+perguntaId)
+        req.flash('success_msg', 'Resposta criada com sucesso!')
+    }).catch(err =>{
+        res.redirect('/')
+        req.flash('error_msg', 'Erro interno ao criar resposta!')
+    })
 })
 
 app.listen(8081, ()=>{
