@@ -40,10 +40,12 @@ app.get('/perguntar', (req, res) => {
 app.post('/salvarpergunta', (req, res) => {
     var titulo = req.body.titulo
     var descricao = req.body.descricao
+    var date = dateNow()
     Pergunta.create({
         titulo: titulo,
         descricao: descricao
     }).then(() =>{
+    
         res.redirect('/')
         req.flash('success_msg', 'Pergunta criada com sucesso!')
     }).catch(err =>{
@@ -89,6 +91,6 @@ app.post('/salvarresposta', (req, res) =>{
     })
 })
 
-app.listen(8081, ()=>{
+app.listen(3000, ()=>{
     console.log('App rodando em: localhost:8081')
 })
