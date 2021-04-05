@@ -1,17 +1,30 @@
 <%- include ('partials/header.ejs'); %>
 <body>
     <%- include ('partials/navbar.ejs'); %>
-    
     <div class="container">
+        <div class="horario"> 
+            <h3>
+                <script language=javascript type="text/javascript">
+                    now = new Date
+                    document.write ("Data: "+now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear()+" - "+now.getHours()+":"+now.getMinutes())
+                </script>
+        </div>
+        </h3>
+        <div class="botaoP">
+            <a href="/perguntar"><button class="btn btn-success">Fazer uma pergunta!</button></a>
+        </div>
         <hr>
-        <h1 class="pergunta">Perguntas:</h1> 
-        <a href="/perguntar" class= "btn btn-light">Perguntar</a>
+        <div class="card">
+            <h1 class="perguntaIndex">Perguntas publicadas:</h1>
+        </div>  
         <hr>
+        
         
         <% perguntas.forEach(pergunta =>{ %>
             <div class="card">
                 <div class="card-body">
                     <h3><%= pergunta.titulo %></h3>
+                    <p><%= pergunta.dia %></p>
                 </div>
                 <div class="card-footer">
                     <a href="/responder/<%= pergunta.id %>"><button class="btn btn-dark">Responder</button></a>

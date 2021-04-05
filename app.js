@@ -4,7 +4,10 @@ const bodyParser = require('body-parser')
 const connection = require('./database/database')//importando configurações do database.js da pasta database
 const Pergunta = require('./database/Pergunta')//IMPORTANDO MODEL Pergunta.js da pasta database
 const Resposta = require('./database/Resposta')
+now = new Date
+    //dia = now.getDate()
 
+    //console.log(typeof dia)
 
 //Database
 connection.authenticate().then(() =>{
@@ -40,7 +43,6 @@ app.get('/perguntar', (req, res) => {
 app.post('/salvarpergunta', (req, res) => {
     var titulo = req.body.titulo
     var descricao = req.body.descricao
-    var date = dateNow()
     Pergunta.create({
         titulo: titulo,
         descricao: descricao
@@ -79,6 +81,7 @@ app.get('/responder/:id', (req, res) =>{
 app.post('/salvarresposta', (req, res) =>{
     var resposta = req.body.resposta
     var perguntaId = req.body.perguntaId
+    var dia = now.getDate()
     Resposta.create({
         corpo: resposta,
         perguntaId: perguntaId

@@ -9,13 +9,14 @@
                 </div>
                 <div class="card-footer">
                     <p><%= pergunta.descricao %></p>
+                    <p><%= pergunta.dia %></p>
                 </div>
             </div>
             <hr>
             <form method="POST" action="/salvarresposta">
-                <textarea placeholder="Digite sua resposta..." class="form-control" name="resposta"></textarea>
+                <textarea placeholder="Digite sua resposta..." class="form-control" name="resposta" required="true"></textarea>
                 <br>
-                <input type="hidden" name="perguntaId" value="<%= pergunta.id %>">
+                <input type="hidden" name="perguntaId" value="<%= pergunta.id %>" >
                 <button type="submit" class="btn btn-success">Enviar resposta</button>
             </form>
             <br>
@@ -25,7 +26,7 @@
                 <% respostas.forEach(resposta =>{ %>   
                     <div class="card-footer">
                         <h5><%= resposta.corpo %></h5>
-                        <small><%= resposta.updatedAt %></small>
+                        <%= dia %>
                        <br><br>
                         
                     </div>

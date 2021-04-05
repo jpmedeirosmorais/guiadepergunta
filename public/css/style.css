@@ -9,9 +9,30 @@ body{
 .perguntaT{
     color: white;
 }
+.perguntaIndex{
+    color: black;
+}
 
 .respostas{
     color: black;
     background-color: white;
 }
 
+.botaoP{
+    padding-left: 86%;
+}
+a{
+    text-decoration:none;
+}
+a:hover{
+    color: rgb(117, 117, 117);
+}
+.nav-link{
+    color: white;
+}
+.homeBar{
+    padding-left: 66%;;
+}
+.horario{
+    color: rgb(153, 153, 153);
+}
