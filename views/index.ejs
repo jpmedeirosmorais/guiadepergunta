@@ -1,4 +1,5 @@
 <%- include ('partials/header.ejs'); %>
+
 <body>
     <%- include ('partials/navbar.ejs'); %>
     <div class="container">
@@ -9,6 +10,7 @@
                     document.write ("Data: "+now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear()+" - "+now.getHours()+":"+now.getMinutes())
                 </script>
         </div>
+        <a href="/criarusuario"><button class="btn btn-primary">Criar Usuário</button></a>
         </h3>
         <div class="botaoP">
             <a href="/perguntar"><button class="btn btn-success">Fazer uma pergunta!</button></a>

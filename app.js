@@ -4,10 +4,25 @@ const bodyParser = require('body-parser')
 const connection = require('./database/database')//importando configurações do database.js da pasta database
 const Pergunta = require('./database/Pergunta')//IMPORTANDO MODEL Pergunta.js da pasta database
 const Resposta = require('./database/Resposta')
+
+const Usuario = require('./database/Usuario')
+
+const flash = require('connect-flash')
 now = new Date
     //dia = now.getDate()
 
     //console.log(typeof dia)
+
+
+    //app.use(flash())
+//midlewares
+/*app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg')
+    next()
+    res.locals.error = req.flash('error')
+    res.locals.user = req.user || null;
+ }) */
 
 //Database
 connection.authenticate().then(() =>{
@@ -91,6 +106,22 @@ app.post('/salvarresposta', (req, res) =>{
     }).catch(err =>{
         res.redirect('/')
         req.flash('error_msg', 'Erro interno ao criar resposta!')
+    })
+})
+app.get('/criarusuario', (req, res) =>{
+    res.render('usuario')
+})
+app.post('/salvarusuario', (req, res) =>{
+    var nome = req.body.nome
+    var email = req.body.email
+    var senha = req.body.senha
+    Usuario.create({
+        nome: nome,
+        email: email,
+        senha: senha
+    }).then(() =>{
+        res.redirect('/')
+        req.flash('Usuário criado com sucesso')
     })
 })
 
