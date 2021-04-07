@@ -9,10 +9,6 @@ const Pergunta = connection.define('pergunta', {
     descricao: {
         type: Sequelize.TEXT,
         allowNull: false
-    },
-    userId:{
-        type: Sequelize.INTEGER,
-        required: true
     }
 })
 

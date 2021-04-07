@@ -98,7 +98,6 @@ app.get('/responder/:id', (req, res) =>{
 app.post('/salvarresposta', (req, res) =>{
     var resposta = req.body.resposta
     var perguntaId = req.body.perguntaId
-    var dia = now.getDate()
     Resposta.create({
         corpo: resposta,
         perguntaId: perguntaId
@@ -110,9 +109,7 @@ app.post('/salvarresposta', (req, res) =>{
         req.flash('error_msg', 'Erro interno ao criar resposta!')
     })
 })
-app.get('/criarusuario', (req, res) =>{
-    res.render('usuario')
-})
+
 app.post('/salvarusuario', (req, res) =>{
     var nome = req.body.nome
     var email = req.body.email
