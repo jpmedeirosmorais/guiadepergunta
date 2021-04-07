@@ -14,6 +14,7 @@ const Usuario = connection.define('usuario', {
         type: Sequelize.STRING,
         required: true
     }
+
 })
 
 Usuario.sync({force:false}).then(() =>{

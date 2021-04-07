@@ -7,6 +7,8 @@ const Resposta = require('./database/Resposta')
 
 const Usuario = require('./database/Usuario')
 
+const Id = require('./database/Id')
+
 const flash = require('connect-flash')
 now = new Date
     //dia = now.getDate()
