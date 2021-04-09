@@ -10,18 +10,19 @@
                     document.write ("Data: "+now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear()+" - "+now.getHours()+":"+now.getMinutes())
                 </script>
         </div>
-        <a href="/criarusuario"><button class="btn btn-primary">Criar Usuário</button></a>
+        
         </h3>
         <div class="botaoP">
             <a href="/perguntar"><button class="btn btn-success">Fazer uma pergunta!</button></a>
         </div>
         <hr>
         <div class="card">
-            <h1 class="perguntaIndex">Perguntas publicadas:</h1>
+            <h1 class="perguntaIndex">Site de perguntas e respostas anônimas. Veja as perguntas mais recentes e responda ou faça a sua agora mesmo!</h1>
         </div>  
         <hr>
-        
-        
+        <br>
+        <div class="card"><h3>Perguntas recentes:</h3></div>
+        <br>
         <% perguntas.forEach(pergunta =>{ %>
             <div class="card">
                 <div class="card-body">
